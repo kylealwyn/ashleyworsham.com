@@ -2,16 +2,16 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
-
-import Bio from '../components/Bio'
+import Markdown from '../components/markdown';
 import { rhythm, scale } from '../utils/typography'
 
-class BlogPostTemplate extends React.Component {
+export default class PostTemplate extends React.Component {
   render() {
     const post = this.props.data.contentfulPost;
 
     const { previous, next } = this.props.pathContext
 
+    console.log(post)
     return (
       <div>
         <Helmet title={post.title} />
@@ -24,30 +24,32 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(-1),
           }}
         >
-          {post.date}
+          {post.createdAt}
         </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+
         <hr
           style={{
             marginBottom: rhythm(1),
           }}
         />
-        <Bio />
+
+        <Markdown>
+          {post.content.content}
+        </Markdown>
       </div>
     )
   }
 }
 
-export default BlogPostTemplate
-
 export const pageQuery = graphql`
-  query productQuery($slug: String!) {
+  query postQuery($slug: String!) {
     contentfulPost(slug: { eq: $slug }) {
       title
       description
       content {
         content
       }
+      createdAt
     }
   }
 `

@@ -2,13 +2,10 @@ import React from 'react'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-
-import Bio from '../components/Bio'
 import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
   render() {
-    console.log(this.props.data)
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const posts = get(this, 'props.data.allContentfulPost.edges')
 
@@ -17,7 +14,6 @@ class BlogIndex extends React.Component {
         <Helmet title={siteTitle} />
 
         {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.slug
           return (
             <div key={node.slug}>
               <h3
@@ -26,7 +22,7 @@ class BlogIndex extends React.Component {
                 }}
               >
                 <Link style={{ boxShadow: 'none' }} to={`/blog/${node.slug}`}>
-                  {title}
+                  {node.title}
                 </Link>
               </h3>
               <small>{node.date}</small>
