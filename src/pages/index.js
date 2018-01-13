@@ -7,7 +7,7 @@ import { rhythm } from '../utils/typography'
 class BlogIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulPost.edges')
+    const posts = get(this, 'props.data.posts.edges')
 
     return (
       <div>
@@ -44,7 +44,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPost {
+    posts: allContentfulPost {
       edges {
         node {
           id

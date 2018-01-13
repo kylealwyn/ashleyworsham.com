@@ -2,12 +2,11 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
-import Markdown from '../components/markdown';
 import { rhythm, scale } from '../utils/typography'
 
 export default class PostTemplate extends React.Component {
   render() {
-    const post = this.props.data.contentfulPost;
+    const { post } = this.props.data;
 
     return (
       <div>
@@ -30,9 +29,9 @@ export default class PostTemplate extends React.Component {
           }}
         />
 
-        <Markdown>
-          {post.content.content}
-        </Markdown>
+        <div
+          dangerouslySetInnerHTML={{ __html: post.remark.content.html }}
+        />
       </div>
     )
   }
@@ -40,11 +39,13 @@ export default class PostTemplate extends React.Component {
 
 export const pageQuery = graphql`
   query postQuery($slug: String!) {
-    contentfulPost(slug: { eq: $slug }) {
+    post: contentfulPost(slug: { eq: $slug }) {
       title
       description
-      content {
-        content
+      remark: childContentfulPostContentTextNode {
+        content: childMarkdownRemark {
+          html
+        }
       }
       createdAt
     }
