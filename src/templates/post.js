@@ -30,7 +30,7 @@ export default class PostTemplate extends React.Component {
         />
 
         <div
-          dangerouslySetInnerHTML={{ __html: post.remark.content.html }}
+          dangerouslySetInnerHTML={{ __html: post.content.remark.html }}
         />
       </div>
     )
@@ -42,12 +42,12 @@ export const pageQuery = graphql`
     post: contentfulPost(slug: { eq: $slug }) {
       title
       description
-      remark: childContentfulPostContentTextNode {
-        content: childMarkdownRemark {
+      createdAt
+      content {
+        remark: childMarkdownRemark {
           html
         }
       }
-      createdAt
     }
   }
 `
