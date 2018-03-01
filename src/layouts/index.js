@@ -1,42 +1,23 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import { Container } from 'react-responsive-grid'
+import React from 'react';
+import { injectGlobal, ThemeProvider } from 'styled-components';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import THEME from '../theme';
 
-import { rhythm, scale } from '../utils/typography'
-
-class Template extends React.Component {
-  render() {
-    const { location, children } = this.props
-
-    return (
-      <Container
-        style={{
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-            to={'/'}
-          >
-            Ashley's Portfolio
-          </Link>
-        </h1>
-        {children()}
-      </Container>
-    )
+injectGlobal`
+  body {
+    font-family: Roboto, sans-serif;
   }
-}
+`;
 
-export default Template
+export default ({ children }) => (
+  <ThemeProvider theme={THEME}>
+    <div>
+      <Header />
+      <main>
+        {children()}
+      </main>
+      <Footer />
+    </div>
+  </ThemeProvider>
+);
