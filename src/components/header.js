@@ -4,7 +4,7 @@ import Link from 'gatsby-link';
 
 const Header = styled.header`
   display: block;
-  padding: 40px 24px;
+  padding: 23px 24px;
 `;
 
 const InnerWrapper = styled.div`
