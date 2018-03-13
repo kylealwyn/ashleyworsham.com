@@ -38,12 +38,24 @@ const MarkdownContainer = styled.div`
   margin: 0 auto;
   max-width: 768px;
 
+  h2 {
+    margin-top: 32px;
+    font-size: 24px;
+    font-weight: 700;
+  }
   p {
     line-height: 1.5;
+    font-size: 20px;
   }
 
   img {
-    max-width: 100%;
+    display: block;
+    margin: 48px auto;
+    max-width: 75%;
+  }
+
+  .row img {
+    margin: 0 auto;
   }
 `;
 

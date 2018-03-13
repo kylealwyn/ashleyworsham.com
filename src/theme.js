@@ -4,7 +4,7 @@ export default {
     fontSize: 14,
   },
   colors: {
-    primary: '#222f3e',
+    primary: '#000',
     green: '#1dd1a1',
     red: '#ee5253',
     blue: '#48dbfb',

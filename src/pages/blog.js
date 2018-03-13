@@ -3,42 +3,21 @@ import get from 'lodash/get';
 import formatDate from 'date-fns/format';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
-import styled from 'styled-components';
 import Container from '../components/container';
 import Button from '../components/button';
-
-const Tagline = styled.h1`
-  text-transform: uppercase;
-  text-align: center;
-  max-width: 300px;
-  margin: 5rem auto 8rem;
-  font-size: 1rem;
-  position: relative;
-  letter-spacing: 1px;
-
-  &:after {
-    position: absolute;
-    content: '';
-    width: 75px;
-    height: 3px;
-    bottom: -30px;
-    left: calc(50% - 75px/2);
-    background: black;
-  }
-`;
+import Tagline from '../components/tagline';
 
 const Post = ({ post }) => (
-  <div>
-    <img src={post.featureImage.file.url} style={{ maxWidth: '100%', marginBottom: '12px' }} alt="Feature" />
-    <h3 style={{ fontSize: '20px' }}>{post.title}</h3>
-    <p>{post.description}</p>
-    <div className="d-flex align-items-center">
+  <Link className="ml-auto" to={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <div style={{ background: 'white', padding: '20px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }}>
+      <img src={post.featureImage.file.url} style={{ maxWidth: '100%', marginBottom: '24px' }} alt="Feature" />
+      <h3 style={{ fontSize: '20px' }}>{post.title}</h3>
       <span>{formatDate(new Date(post.publishDate), 'MMM YYYY')}</span>
-      <Link className="ml-auto" to={`/blog/${post.slug}`}>
+      <div className="text-right">
         <Button type="primary">Read More</Button>
-      </Link>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 
 export default function ProjectsPage(props) {
@@ -46,16 +25,18 @@ export default function ProjectsPage(props) {
 
   return (
     <div>
-      <Helmet title="posts | Ashley Worsham" />
+      <Helmet title="posts | Ashley Worsham">
+        <body style="background: #EBE1FA" />
+      </Helmet>
 
       <Tagline>
-        Sharing My Thoughts And Ideas
+        Sharing My Thoughts<br />And Ideas
       </Tagline>
 
       <Container>
         <div className="row">
           {posts.map(({ node }) => (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div className="col-12 col-sm-6 col-md-4  ">
               <Post post={node} />
             </div>
           ))}

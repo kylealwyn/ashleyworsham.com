@@ -10,7 +10,7 @@ const enhancer = withState('hovering', 'setHovering', false);
 const Project = styled.div`
   position: relative;
   background: ${(props) => props.bg || '#eee'};
-  padding: 32px 24px;
+  padding: 35px;
   overflow: hidden;
   height: 350px;
   margin-bottom: 30px;
@@ -53,10 +53,10 @@ const ViewButton = styled.button`
   padding: 10px;
   color: white;
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   right: 50% ;
   transition: 175ms;
-  transform: translate(calc(100% + 15px), ${(props) => (props.showing ? '0' : '100%')});
+  transform: translate(calc(100% + 15px), ${(props) => (props.showing ? '-10px' : '100%')});
   border: 0;
   cursor: pointer;
   font-weight: 300;
@@ -75,7 +75,7 @@ export default enhancer(({
       onMouseOver={() => setHovering(() => true)}
       onMouseOut={() => setHovering(() => false)}
     >
-      <div className="row" style={{ height: '100%', alignItems: 'center' }}>
+      <div className="row" style={{ height: '100%' }}>
         <div className="col-12 col-sm-6">
           <div className="text-center">
             <ProjectImage src={post.featureImage.file.url} alt="" />

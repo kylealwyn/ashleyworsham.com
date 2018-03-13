@@ -21,6 +21,7 @@ const Button = styled.button`
       border: 1px solid ${mainColor};
       width: ${block ? '100%' : 'auto'};
       border-radius: ${rounded ? theme.radius : 0}px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     `;
   }}
 

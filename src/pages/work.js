@@ -1,30 +1,10 @@
 import React from 'react';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
-import styled from 'styled-components';
 import Container from '../components/container';
 import Item from '../components/item';
+import Tagline from '../components/tagline';
 import { COLORS } from '../config/constants';
-
-const Tagline = styled.h1`
-  text-transform: uppercase;
-  text-align: center;
-  max-width: 300px;
-  margin: 5rem auto 8rem;
-  font-size: 1.25rem;
-  position: relative;
-  letter-spacing: 1px;
-
-  &:after {
-    position: absolute;
-    content: '';
-    width: 75px;
-    height: 3px;
-    bottom: -30px;
-    left: calc(50% - 75px/2);
-    background: black;
-  }
-`;
 
 const Projects = ({ projects = [] }) => {
   let counter = 0;
@@ -87,10 +67,10 @@ export default function ProjectsPage(props) {
       <Helmet title="Projects | Ashley Worsham" />
 
       <Tagline>
-        Designing Delightful Intuitive Experiences
+        Designing Delightful,<br /> Intuitive Experiences
       </Tagline>
 
-      <Container>
+      <Container maxWidth={998}>
         <Projects projects={projects.map(({ node }) => node)} />
       </Container>
     </div>

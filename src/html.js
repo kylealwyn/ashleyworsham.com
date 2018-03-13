@@ -45,7 +45,7 @@ class Html extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
           {css}
         </head>

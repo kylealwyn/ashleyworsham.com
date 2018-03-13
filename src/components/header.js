@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import Link from 'gatsby-link';
 
 const Header = styled.header`
+  display: block;
+  padding: 40px 24px;
+`;
+
+const InnerWrapper = styled.div`
   display: flex;
-  height: 60px;
-  padding: 1rem;
-  align-items: center;
+  align-items: top;
 `;
 
 const Logo = styled.img`
@@ -30,7 +33,7 @@ const NavList = styled.ul`
   }
 
   li + li {
-    margin-left: 1rem;
+    margin-left: 2rem;
   }
 
   a {
@@ -39,29 +42,35 @@ const NavList = styled.ul`
   }
 `;
 
+const activeLinkStyle = {
+  fontWeight: '900',
+};
+
 export default () => (
   <Header>
-    <a href="/">
-      <Logo src="/images/logo.png" alt="Logo" />
-    </a>
-    <Nav>
-      <NavList>
-        <li>
-          <Link to="/projects">
-            Projects
-          </Link>
-        </li>
-        <li>
-          <Link to="/blog">
+    <InnerWrapper>
+      <a href="/">
+        <Logo src="/images/logo.png" alt="Logo" />
+      </a>
+      <Nav>
+        <NavList>
+          <li>
+            <Link to="/work" activeStyle={activeLinkStyle}>
+            Work
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog" activeStyle={activeLinkStyle}>
             Blog
-          </Link>
-        </li>
-        <li>
-          <Link to="/about">
-            About
-          </Link>
-        </li>
-      </NavList>
-    </Nav>
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" activeStyle={activeLinkStyle}>
+            Contact
+            </Link>
+          </li>
+        </NavList>
+      </Nav>
+    </InnerWrapper>
   </Header>
 );

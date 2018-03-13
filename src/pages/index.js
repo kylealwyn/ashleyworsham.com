@@ -2,43 +2,38 @@ import React from 'react';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 import Container from '../components/container';
 import Item from '../components/item';
 import Button from '../components/button';
+import Tagline from '../components/tagline';
 
 const Hero = styled.div`
-  background-image: url(/images/hero.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  padding: 12rem 0;
-  display: flex;
-  align-items: center;
+  padding: 0;
   margin-bottom: 3rem;
 
   @media (max-width: 568px) {
-    padding: 8rem 0;
+    padding: 2rem 0;
   }
 `;
 
-const Tagline = styled.h1`
-  text-transform: uppercase;
-  text-align: center;
-  max-width: 300px;
-  margin: 0 auto;
-  font-size: 1.25rem;
-  font-weight: bold;
+const HeroImageContainer = styled.div`
   position: relative;
-  letter-spacing: 1px;
-
+  z-index: -1;
+  padding: 0 24px;
   &:after {
+    padding-top: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  ${Tagline} {
     position: absolute;
-    content: '';
-    width: 75px;
-    height: 3px;
-    bottom: -20px;
-    left: calc(50% - 75px/2);
-    background: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -51,12 +46,16 @@ export default function HomePage(props) {
       <Helmet title={siteTitle} />
 
       <Hero>
-        <Tagline>
-          Designing Delightful Intuitive Experiences
-        </Tagline>
+        <HeroImageContainer>
+          <Tagline>
+          Designing Delightful,<br />Intuitive Experiences
+          </Tagline>
+          <img src="/images/hero.png" alt="" />
+        </HeroImageContainer>
+
       </Hero>
 
-      <Container maxWidth={768}>
+      <Container maxWidth={998}>
         {posts.map(({ node: post }, i) => (
           <Item
             key={post.slug}
@@ -66,7 +65,13 @@ export default function HomePage(props) {
         ))}
 
         <div className="text-center">
-          <Button>View All Projects</Button>
+          <Link to="/work">
+            <Button style={{
+ width: '200px', height: '60px', fontSize: '18px',
+}}
+            >See More Projects
+            </Button>
+          </Link>
         </div>
       </Container>
     </div>

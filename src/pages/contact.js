@@ -2,43 +2,42 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import Container from '../components/container';
+import Tagline from '../components/tagline';
 
-const Tagline = styled.h1`
-  text-transform: uppercase;
-  font-size: 1rem;
-  position: relative;
-  letter-spacing: 1px;
-`;
 
 export default () => (
   <div>
-    <Helmet title="About | Ashley Worsham" />
+    <Helmet title="About | Ashley Worsham">
+      <body style="background: #E6C3E2" />
+    </Helmet>
 
     <Container>
+      <Tagline>
+        I SOLVE PROBLEMS<br />THROUGH DESIGN.
+      </Tagline>
+
       <div className="row">
         <div className="col-12 col-sm-4">
           <div className="text-center">
-            <Tagline style={{ marginTop: '2rem', marginBottom: '3rem' }}>
-              I SOLVE PROBLEMS THROUGH DESIGN.
-            </Tagline>
+            <h6>
+              SAY HEY!
+            </h6>
 
-            <Tagline>
-              Say Hey!
-            </Tagline>
-
-            <div>
-              <a href="mailto:aaworsham@gmail.com">Shoot Me An Email</a>
+            <div className="mt-5">
+              <a style={{ color: 'black', textDecoration: 'underline' }} href="mailto:aaworsham@gmail.com">Shoot Me An Email</a>
             </div>
             <div>
-              <a href="/ashley-worsham-resume.pdf" download>Download My Resume</a>
+              <a style={{ color: 'black', textDecoration: 'underline' }} href="/ashley-worsham-resume.pdf" download>Download My Resume</a>
             </div>
 
-            <div>
-              <a href="https://linkedin.com/in/ashleyworsham">Find Me On LinkedIn</a>
+            <div className="mt-4">
+              <a href="https://linkedin.com/in/ashleyworsham">
+                <img src="/images/linkedin.svg" alt="" style={{ width: 35, height: 35 }} />
+              </a>
             </div>
           </div>
         </div>
-        <div className="col-12 col-sm-8">
+        <div className="col-12 col-sm-8" style={{ fontSize: '18px' }}>
           <p>
             I&apos;m Ashley Worsham and this is my UX Portfolio. I have a background in psychology and my desire to understand people’s behaviors, emotions, and motivations is what led me to user experience.
           </p>

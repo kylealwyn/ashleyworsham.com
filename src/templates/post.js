@@ -1,8 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import formatDate from 'date-fns/format';
 import Container from '../components/container';
 import Markdown from '../components/markdown';
+import Tagline from '../components/tagline';
 
 const Content = styled(Container)`
   img {
@@ -10,18 +12,25 @@ const Content = styled(Container)`
   }
 `;
 
+const PostTitle = styled.h1`
+  text-align: center;
+  margin-top: 24px;
+`;
+
+const PostPublished = styled.div`
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+`;
+
 const PostTemplate = ({ data: { post } }) => (
   <Content maxWidth={720}>
     <Helmet title={post.title} />
-    <h1>{post.title}</h1>
-    <p>
-      {post.createdAt}
-    </p>
 
-    <hr />
-
+    <Tagline>{post.title}</Tagline>
+    <img src={post.featureImage.file.url} alt="" />
+    <div className="mt-5" />
     <Markdown source={post.content.content} />
-
   </Content>
 );
 
@@ -33,8 +42,16 @@ export const pageQuery = graphql`
       title
       description
       createdAt
+      publishDate
       content {
         content
+      }
+      featureImage {
+        file {
+          url
+          fileName
+          contentType
+        }
       }
     }
   }

@@ -5,7 +5,7 @@ import formatDate from 'date-fns/format';
 import Container from '../components/container';
 import Markdown from '../components/markdown';
 
-const HEADER_HEIGHT = 65;
+const HEADER_HEIGHT = 80;
 const Header = styled.div`
   position: relative;
   top: -${HEADER_HEIGHT}px;
@@ -17,7 +17,7 @@ const Header = styled.div`
 
 const ProjectTitle = styled.h1`
   font-size: 36px;
-  margin: 64px 0 8px;
+  margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 2px;
 `;
@@ -44,6 +44,7 @@ const ProjectPublishedBadge = styled.span`
 
 const DefinitionList = styled.dl`
   margin: 0;
+  font-size: 20px;
 
   dt, dd {
     float: left
@@ -68,9 +69,7 @@ const DefinitionList = styled.dl`
 `;
 
 const Content = styled(Container)`
-  img {
-    max-width: 100%;
-  }
+
 `;
 
 export default ({ data }) => {
@@ -100,6 +99,7 @@ export default ({ data }) => {
         </Container>
       </Header>
       <Content>
+        <div className="mt-5" />
         <div className="row">
           <div className="col-12 col-sm-8 order-2 order-sm-1">
             <Markdown source={post.content.content} />
@@ -115,7 +115,7 @@ export default ({ data }) => {
                   <dd>{post.role}</dd>
 
                   <dt>For</dt>
-                  <dd>{post.role}</dd>
+                  <dd>{post.type}</dd>
 
                   <dt>Medium</dt>
                   <dd>{post.medium}</dd>
@@ -136,6 +136,8 @@ export const pageQuery = graphql`
       description
       createdAt
       publishDate
+      type
+      medium
       featureImage {
         file {
           url
