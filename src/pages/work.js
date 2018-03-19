@@ -90,6 +90,7 @@ export const pageQuery = graphql`
           slug
           description
           publishDate
+          medium
           featureImage {
             file {
               url

@@ -87,7 +87,7 @@ export default ({ data }) => {
                 {post.description }
               </ProjectDescription>
               <ProjectPublishedBadge>
-                {formatDate(post.publishDate, 'YYYY')} / WEB
+                {formatDate(post.publishDate, 'YYYY')} / {post.medium.toUpperCase()}
               </ProjectPublishedBadge>
             </div>
             <div className="col-12 col-sm-6 order 1 order-sm-2">

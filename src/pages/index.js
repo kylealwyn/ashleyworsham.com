@@ -85,7 +85,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    posts: allContentfulPost(filter: { featured: { eq: true }}) {
+    posts: allContentfulPost(
+      sort: { fields: [order], order: ASC },
+      filter: { featured: { eq: true }}
+    ) {
       edges {
         node {
           id
@@ -93,6 +96,7 @@ export const pageQuery = graphql`
           slug
           description
           publishDate
+          medium
           featureImage {
             file {
               url
