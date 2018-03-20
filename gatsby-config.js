@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: "Ashley Worsham Portfolio",
+    title: 'Ashley Worsham Portfolio',
     description: 'The personal portfolio of Ashley Worsham, a UX designer based in San Francisco',
     siteUrl: 'https://ashleyworsham.com',
   },
@@ -10,33 +10,33 @@ module.exports = {
   plugins: [
     'gatsby-plugin-styled-components',
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: 'gatsby-source-contentful',
       options: {
         spaceId: 'e2iny0f983lo',
         accessToken: process.env.CONTENTFUL_TOKEN,
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: 'gatsby-remark-responsive-iframe',
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              wrapperStyle: 'margin-bottom: 1.0725rem',
             },
           },
         ],
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: 'UA-75725762-2',
       },
     },
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: 'gatsby-plugin-feed',
       options: {
         query: `
           {
@@ -52,18 +52,14 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allContentfulPost } }) => {
-              return allContentfulPost.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  title: edge.node.title,
-                  date: edge.node.updatedAt,
-                  description: edge.node.description,
-                  url: site.siteMetadata.siteUrl + edge.node.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.slug,
-                  custom_elements: [{ "content:encoded": edge.node.content }],
-                });
-              });
-            },
+            serialize: ({ query: { site, allContentfulPost } }) => allContentfulPost.edges.map((edge) => Object.assign({}, edge.node.frontmatter, {
+              title: edge.node.title,
+              date: edge.node.updatedAt,
+              description: edge.node.description,
+              url: site.siteMetadata.siteUrl + edge.node.slug,
+              guid: site.siteMetadata.siteUrl + edge.node.slug,
+              custom_elements: [{ 'content:encoded': edge.node.content }],
+            })),
             query: `
               {
                 allContentfulPost(
@@ -84,12 +80,12 @@ module.exports = {
                 }
               }
             `,
-            output: "/feed.xml",
+            output: '/feed.xml',
           },
         ],
       },
     },
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-offline',
+    'gatsby-plugin-react-helmet',
   ],
-}
+};
