@@ -46,6 +46,7 @@ const ProjectPublishedBadge = styled.span`
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 14px;
+  color: black;
 `;
 
 const ViewButton = styled.button`
