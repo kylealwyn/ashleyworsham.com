@@ -38,7 +38,7 @@ class Html extends Component {
           <title>Ashley Worsham's Portfolio</title>
           <meta
             name="description"
-            content="Gatsby example site demoing sass plugin"
+            content="Ashley Worsham is a UX designer based in San Francisco, California"
           />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
