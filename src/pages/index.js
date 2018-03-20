@@ -21,7 +21,11 @@ const HeroImageContainer = styled.div`
   position: relative;
   z-index: -1;
   padding: 0 24px;
-  min-height: 80vh;
+
+  @media (min-width: 1200px) {
+    min-height: 80vh;
+  }
+
   &:after {
     padding-top: 100%;
   }
