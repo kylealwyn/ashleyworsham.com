@@ -25,7 +25,7 @@ export default function ProjectsPage(props) {
 
   return (
     <div>
-      <Helmet title="posts | Ashley Worsham">
+      <Helmet title="Blog | Ashley Worsham">
         <body style="background: #EBE1FA" />
       </Helmet>
 

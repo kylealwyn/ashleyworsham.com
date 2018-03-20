@@ -64,7 +64,7 @@ export default function ProjectsPage(props) {
 
   return (
     <div>
-      <Helmet title="Projects | Ashley Worsham" />
+      <Helmet title="Work | Ashley Worsham" />
 
       <Tagline>
         Designing Delightful,<br /> Intuitive Experiences
