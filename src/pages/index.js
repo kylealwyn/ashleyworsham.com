@@ -21,6 +21,7 @@ const HeroImageContainer = styled.div`
   position: relative;
   z-index: -1;
   padding: 0 24px;
+  min-height: 80vh;
   &:after {
     padding-top: 100%;
   }
@@ -33,7 +34,7 @@ const HeroImageContainer = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -100%);
   }
 `;
 
@@ -52,7 +53,6 @@ export default function HomePage(props) {
           </Tagline>
           <img src="/images/hero.png" alt="" />
         </HeroImageContainer>
-
       </Hero>
 
       <Container maxWidth={998}>
