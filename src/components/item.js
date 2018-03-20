@@ -75,7 +75,7 @@ export default enhancer(({
       onMouseOver={() => setHovering(() => true)}
       onMouseOut={() => setHovering(() => false)}
     >
-      <div className="row" style={{ height: '100%' }}>
+      <div className="row d-flex align-items-center" style={{ height: '100%' }}>
         <div className="col-12 col-sm-6">
           <div className="text-center">
             <ProjectImage src={post.featureImage.file.url} alt="" />

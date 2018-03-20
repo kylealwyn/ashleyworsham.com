@@ -1,31 +1,3 @@
-// import React from 'react';
-// import ReactMarkdown from 'react-markdown';
-// import styled from 'styled-components';
-
-// const MarkdownContainer = styled.div`
-//   display: block;
-//   margin: 0 auto;
-//   max-width: 768px;
-
-//   p {
-//     line-height: 1.5;
-//   }
-
-//   img {
-//     max-width: 100%;
-//   }
-// `;
-
-// export default ({ children, source }) => (
-//   <MarkdownContainer>
-//     <ReactMarkdown
-//       skipHtml={false}
-//       escapeHtml={false}
-//       source={source || children}
-//     />
-//   </MarkdownContainer>
-// );
-
 import React from 'react';
 import CommonMark from 'commonmark';
 import styled from 'styled-components';
@@ -43,6 +15,11 @@ const MarkdownContainer = styled.div`
     font-size: 24px;
     font-weight: 700;
   }
+
+  h2:first-of-type {
+    margin-top: 0;
+  }
+
   p {
     line-height: 1.5;
     font-size: 20px;
@@ -57,6 +34,13 @@ const MarkdownContainer = styled.div`
   .row img {
     margin: 0 auto;
   }
+
+  .row {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export default ({ children, source }) => {
@@ -64,8 +48,10 @@ export default ({ children, source }) => {
   const tree = writer.render(ast);
 
   return (
-    <MarkdownContainer>
-      <div dangerouslySetInnerHTML={{ __html: tree }} />
-    </MarkdownContainer>
+    <div className="markdown">
+      <MarkdownContainer>
+        <div dangerouslySetInnerHTML={{ __html: tree }} />
+      </MarkdownContainer>
+    </div>
   );
 };

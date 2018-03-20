@@ -39,6 +39,11 @@ const NavList = styled.ul`
   a {
     color: black;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 `;
 

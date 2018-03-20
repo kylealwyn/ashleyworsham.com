@@ -19,7 +19,7 @@ export default () => (
       <div className="row">
         <div className="col-12 col-sm-4">
           <div className="text-center">
-            <h6>
+            <h6 style={{ marginTop: 8 }}>
               SAY HEY!
             </h6>
 
@@ -27,7 +27,7 @@ export default () => (
               <a style={{ color: 'black', textDecoration: 'underline' }} href="mailto:aaworsham@gmail.com">Shoot Me An Email</a>
             </div>
             <div>
-              <a style={{ color: 'black', textDecoration: 'underline' }} href="/ashley-worsham-resume.pdf" download>Download My Resume</a>
+              <a style={{ color: 'black', textDecoration: 'underline' }} href="https://drive.google.com/uc?authuser=1&id=15HxW77P_a-qCNzFZr9rWevkE7nejSg1w&export=download" download>Download My Resume</a>
             </div>
 
             <div className="mt-4">

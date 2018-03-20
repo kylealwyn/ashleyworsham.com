@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import formatDate from 'date-fns/format';
+import zoom from 'medium-zoom';
 import Container from '../components/container';
 import Markdown from '../components/markdown';
 import Tagline from '../components/tagline';
@@ -12,29 +12,26 @@ const Content = styled(Container)`
   }
 `;
 
-const PostTitle = styled.h1`
-  text-align: center;
-  margin-top: 24px;
-`;
+export default class PostTemplate extends React.Component {
+  componentDidMount() {
+    zoom(document.querySelectorAll('.markdown img'));
+  }
 
-const PostPublished = styled.div`
-  margin: 0;
-  text-align: center;
-  font-size: 18px;
-`;
+  render() {
+    const { data: { post } } = this.props;
 
-const PostTemplate = ({ data: { post } }) => (
-  <Content maxWidth={720}>
-    <Helmet title={post.title} />
+    return (
+      <Content maxWidth={720}>
+        <Helmet title={post.title} />
 
-    <Tagline>{post.title}</Tagline>
-    <img src={post.featureImage.file.url} alt="" />
-    <div className="mt-5" />
-    <Markdown source={post.content.content} />
-  </Content>
-);
-
-export default PostTemplate;
+        <Tagline>{post.title}</Tagline>
+        <img src={post.featureImage.file.url} alt="" />
+        <div className="mt-5" />
+        <Markdown source={post.content.content} />
+      </Content>
+    );
+  }
+}
 
 export const pageQuery = graphql`
   query postQuery($slug: String!) {

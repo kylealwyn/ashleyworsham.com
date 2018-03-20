@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import zoom from 'medium-zoom';
 import formatDate from 'date-fns/format';
 import Container from '../components/container';
 import Markdown from '../components/markdown';
@@ -44,22 +45,13 @@ const ProjectPublishedBadge = styled.span`
 
 const DefinitionList = styled.dl`
   margin: 0;
-  font-size: 20px;
-
-  dt, dd {
-    float: left
-  }
-
-  dt {
-    width: 100px;
-    clear:both
-  }
+  font-size: 18px;
 
   dt:not(:first-child) {
     margin-top: 12px;
 
     + dd {
-      margin-top: 12px;
+      margin-top: 0;
     }
   }
 
@@ -72,62 +64,68 @@ const Content = styled(Container)`
 
 `;
 
-export default ({ data }) => {
-  const { post } = data;
+export default class ProjectPage extends React.Component {
+  componentDidMount() {
+    zoom(document.querySelectorAll('.markdown img'));
+  }
 
-  return (
-    <div>
-      <Helmet title={post.title} />
-      <Header>
-        <Container>
+  render() {
+    const { post } = this.props.data;
+
+    return (
+      <div>
+        <Helmet title={post.title} />
+        <Header>
+          <Container>
+            <div className="row">
+              <div className="col-12 col-sm-6 order-2 order-sm-1">
+                <ProjectTitle>{post.title}</ProjectTitle>
+                <ProjectDescription>
+                  {post.description }
+                </ProjectDescription>
+                <ProjectPublishedBadge>
+                  {formatDate(post.publishDate, 'YYYY')} / {post.medium.toUpperCase()}
+                </ProjectPublishedBadge>
+              </div>
+              <div className="col-12 col-sm-6 order 1 order-sm-2">
+                <div className="text-sm-center">
+                  <ProjectFeatureImage src={post.featureImage.file.url} alt="" />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </Header>
+        <Content>
+          <div className="mt-5" />
           <div className="row">
-            <div className="col-12 col-sm-6 order-2 order-sm-1">
-              <ProjectTitle>{post.title}</ProjectTitle>
-              <ProjectDescription>
-                {post.description }
-              </ProjectDescription>
-              <ProjectPublishedBadge>
-                {formatDate(post.publishDate, 'YYYY')} / {post.medium.toUpperCase()}
-              </ProjectPublishedBadge>
+            <div className="col-12 col-sm-8 order-2 order-sm-1">
+              <Markdown source={post.content.content} />
             </div>
-            <div className="col-12 col-sm-6 order 1 order-sm-2">
-              <div className="text-sm-center">
-                <ProjectFeatureImage src={post.featureImage.file.url} alt="" />
+            <div className="col-12 col-sm-4 order-1 order-sm-2 mb-3">
+              <div className="card border-0">
+                <div className="card-body bg-light">
+                  <DefinitionList>
+                    <dt>Date</dt>
+                    <dd>{formatDate(post.publishDate, 'MMMM YYYY')}</dd>
+
+                    <dt>Role</dt>
+                    <dd>{post.role}</dd>
+
+                    <dt>For</dt>
+                    <dd>{post.for}</dd>
+
+                    <dt>Medium</dt>
+                    <dd>{post.medium}</dd>
+                  </DefinitionList>
+                </div>
               </div>
             </div>
           </div>
-        </Container>
-      </Header>
-      <Content>
-        <div className="mt-5" />
-        <div className="row">
-          <div className="col-12 col-sm-8 order-2 order-sm-1">
-            <Markdown source={post.content.content} />
-          </div>
-          <div className="col-12 col-sm-4 order-1 order-sm-2 mb-3">
-            <div className="card border-0">
-              <div className="card-body bg-light">
-                <DefinitionList>
-                  <dt>Date</dt>
-                  <dd>{formatDate(post.publishDate, 'MMMM YYYY')}</dd>
-
-                  <dt>Role</dt>
-                  <dd>{post.role}</dd>
-
-                  <dt>For</dt>
-                  <dd>{post.type}</dd>
-
-                  <dt>Medium</dt>
-                  <dd>{post.medium}</dd>
-                </DefinitionList>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Content>
-    </div>
-  );
-};
+        </Content>
+      </div>
+    );
+  }
+}
 
 export const pageQuery = graphql`
   query projectQuery($slug: String!) {
@@ -138,6 +136,8 @@ export const pageQuery = graphql`
       publishDate
       type
       medium
+      role
+      for
       featureImage {
         file {
           url
