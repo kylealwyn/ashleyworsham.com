@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default styled.h1`
   text-transform: uppercase;
   text-align: center;
-  margin: 0 auto 64px;
+  margin: 32px auto 72px;
   font-size: 28px;
   font-weight: bold;
   position: relative;

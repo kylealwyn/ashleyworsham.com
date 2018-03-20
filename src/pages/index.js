@@ -39,6 +39,7 @@ const HeroImageContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -100%);
+    margin: 0;
   }
 `;
 
