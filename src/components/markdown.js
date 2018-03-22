@@ -32,7 +32,7 @@ const MarkdownContainer = styled.div`
   }
 
   .row img {
-    margin: 0 auto;
+    margin: 0px auto 48px;
   }
 
   .row {

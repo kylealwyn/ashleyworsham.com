@@ -1,10 +1,14 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 import zoom from 'medium-zoom';
+import get from 'lodash/get';
+import { ArrowLeftIcon, ArrowRightIcon } from 'mdi-react';
 import formatDate from 'date-fns/format';
 import Container from '../components/container';
 import Markdown from '../components/markdown';
+import { appendImageDescriptions } from '../utils';
 
 const HEADER_HEIGHT = 80;
 const Header = styled.div`
@@ -61,16 +65,111 @@ const DefinitionList = styled.dl`
 `;
 
 const Content = styled(Container)`
+  .image-description {
+    text-align: center;
+    font-size: 0.85rem;
+    margin: -36px 0 24px;
+    color: slategray;
+  }
 
+  .prev-next {
+    .mdi-icon {
+      margin-right: 12px;
+    }
+    .col-6:nth-of-type(2) {
+      a {
+        justify-content: flex-end;
+      }
+
+      .mdi-icon {
+        margin: 0 0 0 12px;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+      font-size: 18px;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+
+    .disabled {
+      color: slategray;
+    }
+  }
 `;
 
 export default class ProjectPage extends React.Component {
+  imageEls = [];
   componentDidMount() {
     zoom(document.querySelectorAll('.markdown img'));
+    appendImageDescriptions();
+  }
+
+  componentWillUnmount() {
+    while (this.imageEls.length) {
+      const el = this.imageEls.shift();
+      el.remove();
+    }
+  }
+
+  get slug() {
+    return this.props.pathContext.slug;
+  }
+
+  get posts() {
+    return get(this.props, 'data.projects.edges', []).map((p) => p.node);
+  }
+
+  get post() {
+    return this.posts.filter((p) => p.slug === this.slug).shift();
+  }
+
+  renderPrevPost() {
+    const { posts } = this;
+    const curIdx = posts.findIndex((p) => p.slug === this.slug);
+    const post = posts[curIdx - 1];
+
+    if (post) {
+      return (
+        <Link to={`/projects/${post.slug}`}>
+          <ArrowLeftIcon /> {post.title}
+        </Link>
+      );
+    }
+    return (
+      <div className="disabled">
+        No newer projects
+      </div>
+    );
+  }
+
+  renderNextPost() {
+    const { posts } = this;
+    const curIdx = posts.findIndex((p) => p.slug === this.slug);
+    const post = posts[curIdx + 1];
+
+    if (post) {
+      return (
+        <Link to={`/projects/${post.slug}`}>
+          {post.title} <ArrowRightIcon />
+        </Link>
+      );
+    }
+    return (
+      <div className="disabled">
+        No newer projects
+      </div>
+    );
   }
 
   render() {
-    const { post } = this.props.data;
+    const { post } = this;
 
     return (
       <div>
@@ -96,12 +195,12 @@ export default class ProjectPage extends React.Component {
           </Container>
         </Header>
         <Content>
-          <div className="mt-5" />
+          <div className="mt-4" />
           <div className="row">
-            <div className="col-12 col-sm-8 order-2 order-sm-1">
+            <div className="col-12 col-md-8 order-2 order-md-1">
               <Markdown source={post.content.content} />
             </div>
-            <div className="col-12 col-sm-4 order-1 order-sm-2 mb-3">
+            <div className="col-12 col-md-4 order-1 order-md-2 mb-4">
               <div className="card border-0">
                 <div className="card-body bg-light">
                   <DefinitionList>
@@ -121,6 +220,15 @@ export default class ProjectPage extends React.Component {
               </div>
             </div>
           </div>
+
+          <div className="row mt-5 prev-next">
+            <div className="col-6">
+              {this.renderPrevPost()}
+            </div>
+            <div className="col-6">
+              {this.renderNextPost()}
+            </div>
+          </div>
         </Content>
       </div>
     );
@@ -128,23 +236,35 @@ export default class ProjectPage extends React.Component {
 }
 
 export const pageQuery = graphql`
-  query projectQuery($slug: String!) {
-    post: contentfulPost(slug: { eq: $slug }) {
-      title
-      description
-      createdAt
-      publishDate
-      type
-      medium
-      role
-      for
-      featureImage {
-        file {
-          url
+  query ProjectPageQuery {
+    projects: allContentfulPost(
+      sort: { fields: [order], order: ASC },
+      filter: { type: { eq: "project" }}
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          description
+          publishDate
+          medium
+          role
+          for
+          order
+          featureImage {
+            file {
+              url
+              fileName
+              contentType
+            }
+          }
+          content {
+            content
+          }
+          createdAt
+          updatedAt
         }
-      }
-      content {
-        content
       }
     }
   }

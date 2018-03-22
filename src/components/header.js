@@ -43,6 +43,7 @@ const NavList = styled.ul`
     &:hover {
       text-decoration: none;
       color: inherit;
+      font-weight: bold;
     }
   }
 `;
@@ -70,8 +71,8 @@ export default () => (
             </Link>
           </li>
           <li>
-            <Link to="/contact" activeStyle={activeLinkStyle}>
-            Contact
+            <Link to="/about" activeStyle={activeLinkStyle}>
+              About
             </Link>
           </li>
         </NavList>
