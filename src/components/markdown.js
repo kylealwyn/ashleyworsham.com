@@ -16,6 +16,11 @@ const MarkdownContainer = styled.div`
     font-weight: 700;
   }
 
+  h3 {
+    font-size: 20px;
+    margin-top: 24px;
+  }
+
   h2:first-of-type {
     margin-top: 0;
   }
