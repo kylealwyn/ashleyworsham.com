@@ -33,6 +33,7 @@ const ProjectTitle = styled.h2`
   font-size: 22px;
   text-transform: uppercase;
   color: black;
+  font-weight: 700;
   letter-spacing: 1px;
 `;
 

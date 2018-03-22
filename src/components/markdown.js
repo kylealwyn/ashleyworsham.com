@@ -31,6 +31,10 @@ const MarkdownContainer = styled.div`
     max-width: 75%;
   }
 
+  hr {
+    margin: 36px 0;
+  }
+
   .row img {
     margin: 0px auto 48px;
   }

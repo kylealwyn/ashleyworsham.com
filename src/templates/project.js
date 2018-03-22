@@ -25,6 +25,7 @@ const ProjectTitle = styled.h1`
   margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-weight: 700;
 `;
 
 const ProjectDescription = styled.p`

@@ -6,7 +6,11 @@ import THEME from '../theme';
 
 injectGlobal`
   body {
-    font-family: Roboto, sans-serif;
+    font-family: Lora, sans-serif;
+  }
+
+  h1,h2,h3,h4,h5,h6, button {
+    font-family: Istok Web;
   }
 `;
 

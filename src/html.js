@@ -46,7 +46,7 @@ class Html extends Component {
             content="width=device-width, initial-scale=1.0"
           />
           <link rel="shortcut icon" href="/images/logo.png" />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" />
+          <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,700|Lora:400,700" rel="stylesheet" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
           {css}
         </head>
