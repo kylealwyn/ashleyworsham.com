@@ -54,7 +54,7 @@ export default function HomePage(props) {
       <Hero>
         <HeroImageContainer>
           <Tagline>
-          Designing Delightful,<br />Intuitive Experiences
+            Designing Delightful,<br />Intuitive Experiences
           </Tagline>
           <img src="/images/hero.png" alt="" />
         </HeroImageContainer>

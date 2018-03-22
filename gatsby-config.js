@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: 'Ashley Worsham Portfolio',
+    title: 'Ashley Worsham\'s Portfolio',
     description: 'The personal portfolio of Ashley Worsham, a UX designer based in San Francisco',
     siteUrl: 'https://ashleyworsham.com',
   },
