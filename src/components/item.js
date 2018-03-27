@@ -24,6 +24,7 @@ const ProjectImage = styled.img`
   max-width: 200px;
   margin-bottom: 32px;
   padding-right: 1rem;
+
   @media (max-width: 528px) {
     max-width: 140px;
   }
@@ -35,11 +36,19 @@ const ProjectTitle = styled.h2`
   color: black;
   font-weight: 700;
   letter-spacing: 1px;
+
+  @media (max-width: 558px) {
+    font-size: 18px;
+  }
 `;
 
 const ProjectDescription = styled.p`
   font-size: 18px;
   color: black;
+
+  @media (max-width: 558px) {
+    font-size: 16px;
+  }
 `;
 
 const ProjectPublishedBadge = styled.span`

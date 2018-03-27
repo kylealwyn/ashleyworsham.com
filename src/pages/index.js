@@ -22,7 +22,7 @@ const HeroImageContainer = styled.div`
   z-index: -1;
   padding: 0 24px;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1000px) {
     min-height: 80vh;
   }
 
@@ -34,15 +34,50 @@ const HeroImageContainer = styled.div`
     width: 100%;
   }
 
-  ${Tagline} {
+  @media (max-width: 668px) {
+    img {
+      display: none;
+    }
+  }
+
+  .wrap {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -100%);
     margin: 0;
+    text-align: center;
+
+    @media (max-width: 668px) {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      margin: 0;
+      margin-top: -24px;
+      font-weight: 300;
+
+      @media (max-width: 668px) {
+        margin-top: -24px;
+        font-size: 18px;
+      }
+    }
   }
 `;
 
+const FeaturedProjectContainer = styled(Container)`
+  @media (min-width: 668px) {
+    position: relative;
+    top: -100px;
+  }
+`;
+
+// position: 'absolute', top: 'calc(100vh - 50px)', left: '50%', transform: 'translateX(-50%)',
 export default function HomePage(props) {
   const siteTitle = get(props, 'data.site.siteMetadata.title');
   const posts = get(props, 'data.posts.edges');
@@ -53,14 +88,22 @@ export default function HomePage(props) {
 
       <Hero>
         <HeroImageContainer>
-          <Tagline>
+          <div className="wrap">
+            <Tagline>
             Designing Delightful,<br />Intuitive Experiences
-          </Tagline>
+            </Tagline>
+            <h2>Ashley Worsham • UX Designer</h2>
+          </div>
           <img src="/images/hero.png" alt="" />
         </HeroImageContainer>
       </Hero>
 
-      <Container maxWidth={998}>
+      <FeaturedProjectContainer
+        maxWidth={998}
+        style={{
+
+}}
+      >
         {posts.map(({ node: post }, i) => (
           <Item
             key={post.slug}
@@ -78,7 +121,7 @@ export default function HomePage(props) {
             </Button>
           </Link>
         </div>
-      </Container>
+      </FeaturedProjectContainer>
     </div>
   );
 }

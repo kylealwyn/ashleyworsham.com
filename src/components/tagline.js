@@ -11,11 +11,10 @@ export default styled.h1`
   line-height: 40px;
   width: 500px;
 
-  @media (max-width: 528px) {
+  @media (max-width: 668px) {
     font-size: 16px;
     line-height: 26px;
     width: 300px;
-
   }
 
   &:after {
