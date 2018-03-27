@@ -1,9 +1,29 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import { EmailOutlineIcon, LinkedinIcon } from 'mdi-react';
 import Container from '../components/container';
 import Tagline from '../components/tagline';
 
+const SocialRow = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  a + a{
+    margin-left: 12px;
+  }
+`;
+
+const SocialLink = styled.a`
+  height: 35px;
+  width: 35px;
+  border: 2px solid black;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default () => (
   <div>
@@ -24,17 +44,17 @@ export default () => (
             </h6>
 
             <div className="mt-5">
-              <a style={{ color: 'black', textDecoration: 'underline' }} href="mailto:aaworsham@gmail.com">Shoot Me An Email</a>
-            </div>
-            <div>
-              <a style={{ color: 'black', textDecoration: 'underline' }} href="https://drive.google.com/uc?authuser=1&id=15HxW77P_a-qCNzFZr9rWevkE7nejSg1w&export=download" download>Download My Resume</a>
+              <a style={{ color: 'black', textDecoration: 'underline' }} href="/ashley-worsham-resume.pdf" target="_blank">Check Out My Resume</a>
             </div>
 
-            <div className="mt-4">
-              <a href="https://linkedin.com/in/ashleyworsham">
-                <img src="/images/linkedin.svg" alt="" style={{ width: 35, height: 35 }} />
-              </a>
-            </div>
+            <SocialRow>
+              <SocialLink href="mailto:aaworsham@gmail.com">
+                <EmailOutlineIcon size={20} />
+              </SocialLink>
+              <SocialLink href="https://linkedin.com/in/ashleyworsham" target="_blank">
+                <LinkedinIcon size={20} />
+              </SocialLink>
+            </SocialRow>
           </div>
         </div>
         <div className="col-12 col-sm-8" style={{ fontSize: '18px' }}>
