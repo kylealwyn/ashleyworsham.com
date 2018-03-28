@@ -26,18 +26,27 @@ const ProjectTitle = styled.h1`
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 700;
+
+  @media (max-width: 528px) {
+    font-size: 28px;
+  }
 `;
 
 const ProjectDescription = styled.p`
   font-size: 20px;
   margin: 0 0 12px;
+
+  @media (max-width: 528px) {
+    font-size: 18px;
+  }
 `;
 
 const ProjectFeatureImage = styled.img`
   max-width: 250px;
 
   @media (max-width: 528px) {
-    max-width: 175px;
+    max-width: 150px;
+    margin-bottom: 2rem;
   }
 `;
 
