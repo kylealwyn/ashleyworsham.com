@@ -145,17 +145,13 @@ export default class ProjectPage extends React.Component {
     const curIdx = posts.findIndex((p) => p.slug === this.slug);
     const post = posts[curIdx - 1];
 
-    if (post) {
-      return (
-        <Link to={`/projects/${post.slug}`}>
-          <ArrowLeftIcon /> {post.title}
-        </Link>
-      );
+    if (!post) {
+      return null;
     }
     return (
-      <div className="disabled">
-        No newer projects
-      </div>
+      <Link to={`/projects/${post.slug}`}>
+        <ArrowLeftIcon /> {post.title}
+      </Link>
     );
   }
 
@@ -164,17 +160,14 @@ export default class ProjectPage extends React.Component {
     const curIdx = posts.findIndex((p) => p.slug === this.slug);
     const post = posts[curIdx + 1];
 
-    if (post) {
-      return (
-        <Link to={`/projects/${post.slug}`}>
-          {post.title} <ArrowRightIcon />
-        </Link>
-      );
+    if (!post) {
+      return null;
     }
+
     return (
-      <div className="disabled">
-        No newer projects
-      </div>
+      <Link to={`/projects/${post.slug}`}>
+        {post.title} <ArrowRightIcon />
+      </Link>
     );
   }
 
