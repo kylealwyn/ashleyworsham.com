@@ -45,6 +45,7 @@ class Html extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
+          <meta name="google-site-verification" content="gPEVsD8nV9QMefXArbnEwUAIxbuYmSvi28mclE8-cUo" />
           <link rel="shortcut icon" href="/images/logo.png" />
           <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,700|Lora:400,700" rel="stylesheet" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
