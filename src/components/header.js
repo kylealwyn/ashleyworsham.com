@@ -72,8 +72,8 @@ export default () => (
             </Link>
           </li>
           <li>
-            <Link to="/about" activeStyle={activeLinkStyle}>
-              About
+            <Link to="/contact" activeStyle={activeLinkStyle}>
+              Contact
             </Link>
           </li>
         </NavList>
