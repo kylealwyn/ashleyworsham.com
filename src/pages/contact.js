@@ -27,7 +27,7 @@ const SocialLink = styled.a`
 
 export default () => (
   <div>
-    <Helmet title="About | Ashley Worsham">
+    <Helmet title="Contact | Ashley Worsham">
       <body style="background: #E6C3E2" />
     </Helmet>
 
