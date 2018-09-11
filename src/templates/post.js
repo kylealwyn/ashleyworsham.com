@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import zoom from 'medium-zoom';
 import Container from '../components/container';
 import Markdown from '../components/markdown';
 import Tagline from '../components/tagline';
@@ -14,7 +13,7 @@ const Content = styled(Container)`
 
 export default class PostTemplate extends React.Component {
   componentDidMount() {
-    zoom(document.querySelectorAll('.markdown img'));
+    mediumZoom(document.querySelectorAll('.markdown img'));
   }
 
   render() {

@@ -49,6 +49,7 @@ class Html extends Component {
           <link rel="shortcut icon" href="/images/logo.png" />
           <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,700|Lora:400,700" rel="stylesheet" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+          <script src="https://unpkg.com/medium-zoom@1.0.2/dist/medium-zoom.min.js" />
           {css}
         </head>
         <body>

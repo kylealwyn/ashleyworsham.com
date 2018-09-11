@@ -2,7 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
-import zoom from 'medium-zoom';
 import get from 'lodash/get';
 import { ArrowLeftIcon, ArrowRightIcon } from 'mdi-react';
 import formatDate from 'date-fns/format';
@@ -116,8 +115,9 @@ const Content = styled(Container)`
 
 export default class ProjectPage extends React.Component {
   imageEls = [];
+
   componentDidMount() {
-    zoom(document.querySelectorAll('.markdown img'));
+    mediumZoom(document.querySelectorAll('.markdown img'));
     appendImageDescriptions();
   }
 
