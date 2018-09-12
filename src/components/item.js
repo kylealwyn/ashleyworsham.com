@@ -98,9 +98,6 @@ export default enhancer(({
           </ProjectTitle>
 
           <ProjectDescription>{post.description}</ProjectDescription>
-          <ProjectPublishedBadge>
-            {formatDate(post.publishDate, 'YYYY')} / {post.medium.toUpperCase()}
-          </ProjectPublishedBadge>
         </div>
       </div>
 

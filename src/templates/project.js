@@ -185,9 +185,6 @@ export default class ProjectPage extends React.Component {
                 <ProjectDescription>
                   {post.description }
                 </ProjectDescription>
-                <ProjectPublishedBadge>
-                  {formatDate(post.publishDate, 'YYYY')} / {post.medium.toUpperCase()}
-                </ProjectPublishedBadge>
               </div>
               <div className="col-12 col-sm-6 order 1 order-sm-2">
                 <div className="text-sm-center">
@@ -207,9 +204,6 @@ export default class ProjectPage extends React.Component {
               <div className="card border-0">
                 <div className="card-body bg-light">
                   <DefinitionList>
-                    <dt>Date</dt>
-                    <dd>{formatDate(post.publishDate, 'MMMM YYYY')}</dd>
-
                     <dt>Role</dt>
                     <dd>{post.role}</dd>
 
