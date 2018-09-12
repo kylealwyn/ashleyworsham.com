@@ -25,7 +25,7 @@ const SocialLink = styled.a`
   justify-content: center;
 `;
 
-export default () => (
+export default ({ data }) => (
   <div>
     <Helmet title="Contact | Ashley Worsham">
       <body style="background: #E6C3E2" />
@@ -44,7 +44,7 @@ export default () => (
             </h6>
 
             <div className="mt-5">
-              <a style={{ color: 'black', textDecoration: 'underline' }} href="/ashley-worsham-resume.pdf" target="_blank">Check Out My Resume</a>
+              <a style={{ color: 'black', textDecoration: 'underline' }} href={data.resume.file.url} target="_blank">Check Out My Resume</a>
             </div>
 
             <SocialRow>
@@ -90,3 +90,14 @@ export default () => (
     </Container>
   </div>
 );
+
+export const pageQuery = graphql`
+  query ContactPageQuery {
+    resume: contentfulAsset(id: { eq: "c5W6w1wN1qoW6g8aQQMA8u8" }) {
+      id
+      file {
+        url
+      }
+    }
+  }
+`;
