@@ -34,6 +34,7 @@ const MarkdownContainer = styled.div`
     display: block;
     margin: 48px auto;
     max-width: 75%;
+    border: 1px solid #eeeeee;
   }
 
   hr {
