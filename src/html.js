@@ -1,33 +1,15 @@
 import React, { Component } from 'react';
 import * as PropTypes from 'prop-types';
 
-// let stylesStr
-// if (process.env.NODE_ENV === `production`) {
-//   try {
-//     stylesStr = require(`!raw-loader!../public/styles.css`)
-//   } catch (e) {
-//     console.log(e)
-//   }
-// }
-
 const propTypes = {
   headComponents: PropTypes.node.isRequired,
   body: PropTypes.node.isRequired,
   postBodyComponents: PropTypes.node.isRequired,
 };
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Html extends Component {
   render() {
-    let css;
-    // if (process.env.NODE_ENV === `production`) {
-    //   css = (
-    //     <style
-    //       id="gatsby-inlined-css"
-    //       dangerouslySetInnerHTML={{ __html: stylesStr }}
-    //     />
-    //   )
-    // }
-
     return (
       <html lang="en">
         <head>
@@ -50,7 +32,6 @@ class Html extends Component {
           <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,700|Lora:400,700" rel="stylesheet" />
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
           <script src="https://unpkg.com/medium-zoom@1.0.2/dist/medium-zoom.min.js" />
-          {css}
         </head>
         <body>
           <div

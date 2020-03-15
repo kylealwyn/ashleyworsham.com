@@ -26,9 +26,8 @@ const NavList = styled.ul`
 
   li {
     display: inline-block;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 500;
-    text-transform: uppercase;
     font-family: Istok Web, sans-serif;
 
   }

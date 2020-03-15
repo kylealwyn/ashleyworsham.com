@@ -7,10 +7,13 @@ const Footer = styled.footer`
   font-size: 12px;
 `;
 
-export default () => (
-  <Footer>
-    <div className="text-center">
-      Ashley Worsham <br />&copy; 2018
-    </div>
-  </Footer>
-);
+export default () => {
+  const year = new Date().getFullYear();
+  return (
+    <Footer>
+      <div className="text-center">
+      Ashley Worsham <br />&copy; {year}
+      </div>
+    </Footer>
+  );
+};
